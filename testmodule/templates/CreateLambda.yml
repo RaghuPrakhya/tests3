@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Lambda with Cloudwatch Event to create a Technical Report of Baxter Cloud Compliance.
+
+Parameters:
+  LambdaBucket:
+    Type: String
+    Default: rplambda 
+    Description: S3 bucket for the code upload
+
+  LambdaRegion:
+    Type: String
+    Default: us-east-2
+    Description: S3 bucket for the code upload
+
+Resources:
+  TestReportLambda:
+    Type: "AWS::Lambda::Function"
+    Properties:
+      Role: "arn:aws:iam::770765425423:role/TestLambda"
+      Runtime: python3.8
+      FunctionName: TestReportLambda
+      Description: Testing
+      Handler: "TestFunctionCF2.lambda_handler"
+      Timeout: 300
+      Code:
+        S3Bucket: !Join ["-", [!Ref LambdaBucket, !Ref LambdaRegion]]
+        S3Key: "TestFunctionCF.zip"
+        
+
+Outputs:
+  TestReportLambda:
+    Description: Function Name
+    Value: !Ref TestReportLambda

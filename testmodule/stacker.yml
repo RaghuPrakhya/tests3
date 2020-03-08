@@ -1,0 +1,38 @@
+stacker_bucket: ${stackerbucketname}
+#namespace: bax-${environment}-tools-sec-alertlogic
+#codebucket: ${rxref s3::BucketName}
+
+#common_tags: &common_tags
+#  Environment: ${env_tag}
+#  Appname: ${appname}
+#  Appid: ${appid}
+#  Owner: ${owner}
+#  Costcenter: ${costcenter}
+#
+#common_parameters: &common_parameters
+#  pAccountShortName: ${accountshortname}
+#  pEnvironment: ${environment}
+#  pSecurityDistribution: ${securitydistribution}
+#  pCostcenter: ${costcenter}
+#  pAppId: ${appid}
+#  pOwner: ${owner}
+#  pAppname: ${appname}
+
+bucket_parameters: &bucket_parameters
+  RPS3TestRegion: ${region}
+
+lambda_parameters: &lambda_parameters
+  LambdaRegion: ${region}
+
+stacks:
+  bucketstk:
+    enabled: ${deploybucketstack}
+    template_path: templates/CreateBucket.yml
+    variables:
+      <<: *bucket_parameters
+  lambdastk:
+    enabled: ${deploylambdastack}
+    template_path: templates/CreateLambda.yml
+    variables:
+      <<: *lambda_parameters
+

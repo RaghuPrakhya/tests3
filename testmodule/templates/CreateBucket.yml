@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: RPS3Test with Cloudwatch Event to create a Technical Report of Baxter Cloud Compliance.
+
+Parameters:
+  RPS3TestBucket:
+    Type: String
+    Default: rpbucktest 
+    Description: S3 bucket for the code upload
+
+  RPS3TestRegion:
+    Type: String
+    Default: us-east-2
+    Description: S3 bucket for the code upload
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: BucketOwnerFullControl
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      BucketName: !Join ["-", [!Ref RPS3TestBucket, !Ref RPS3TestRegion]]
+
+Outputs:
+  S3Bucket:
+    Description: Function Name
+    Value: !Ref S3Bucket

@@ -1,0 +1,13 @@
+# See full syntax at https://docs.onica.com/projects/runway/en/latest/
+deployments:
+  - modules:
+      - testmodule
+      #- nameofmysecondmodulefolder
+      # - etc...
+    regions:
+      - eu-central-1
+      - us-east-2
+      - ap-southeast-1
+# If using environment folders instead of git branches, git branch lookup can
+# be disabled entirely (see "Repo Structure")
+ignore_git_branch: true
