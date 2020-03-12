@@ -4,7 +4,7 @@ Description: RPS3Test with Cloudwatch Event to create a Technical Report of Baxt
 Parameters:
   RPS3TestBucket:
     Type: String
-    Default: rpbucktest 
+    Default: rpbucktest22
     Description: S3 bucket for the code upload
 
   RPS3TestRegion:
