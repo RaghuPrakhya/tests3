@@ -1,5 +1,3 @@
-pipeline{
-
     agent { label "master" }
 
     parameters {       
@@ -133,5 +131,4 @@ def notifyBuild(String buildStatus = 'STARTED') {
         Check console output at ${env.BUILD_URL}
         """
     )
-}
 
