@@ -1,4 +1,6 @@
-pipeline{
+pipeline {
+
+    agent { label "master" }
 
     parameters {       
         string(name: 'ACCOUNTS', defaultValue: 'dev-raghu,dev-raghu2', description: 'Comma separated list of accounts to deploy to')
