@@ -1,3 +1,5 @@
+pipeline{
+
     parameters {       
         string(name: 'ACCOUNTS', defaultValue: 'dev-raghu,dev-raghu2', description: 'Comma separated list of accounts to deploy to')
     }
@@ -115,6 +117,8 @@
             }
         }         
     }
+
+}
 
 // Function to  send notification email
 def notifyBuild(String buildStatus = 'STARTED') {
