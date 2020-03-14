@@ -52,9 +52,14 @@ pipeline {
                       ACCOUNTS_ARRAY=($ACCOUNTS);
                       WORKSPACE=$(pwd);
   
+                      cd ${WORKSPACE}/tests3
+
+                      ls -ltR
+
                       ## Loop through all the accounts provided
                       for ((i=0; i<${#ACCOUNTS_ARRAY[@]}; ++i)); do     
-                      
+                     
+
                           ## For each account determine the account number
                           if [ ${ACCOUNTS_ARRAY[$i]} == 'dev-raghu' ]; then
                               ACCOUNT_NUM='770765425423'
@@ -78,15 +83,11 @@ pipeline {
                           #### Take deployment actions here ####
                           ######################################
                           
-                          #echo $WORKSPACE
-                          #cd $WORKSPACE/runway/dev
-                          #cd /var/lib/jenkins/workspace/Security/dev/deploy-config-rules/runway/dev
-                          export DEPLOY_ENVIRONMENT=${ACCOUNTS_ARRAY[$i]}
-                          #runway taxi
-                          #runway takeoff
-                          cd /var/lib/jenkins/workspace/tests3
-                          aws s3 ls
+                          #export DEPLOY_ENVIRONMENT=${ACCOUNTS_ARRAY[$i]}
+                          #aws s3 ls
   
+                          runway plan
+
                           ################################
                           #### End deployment actions ####
                           #################################
