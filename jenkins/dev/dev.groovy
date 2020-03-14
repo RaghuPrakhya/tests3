@@ -73,9 +73,9 @@ pipeline {
                           export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
                           export AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
 
-                          echo ${AWS_ACCESS_KEY_ID}
-                          echo ${AWS_SECRET_ACCESS_KEY}
-                          echo ${AWS_SESSION_TOKEN} 
+                          #echo ${AWS_ACCESS_KEY_ID}
+                          #echo ${AWS_SECRET_ACCESS_KEY}
+                          #echo ${AWS_SESSION_TOKEN} 
 
                           ######################################
                           #### Take deployment actions here ####
@@ -125,5 +125,5 @@ pipeline {
 
 // Function to  send notification email
 def notifyBuild(String buildStatus = 'STARTED') {
-    println ${buildStatus}
+    echo ${buildStatus}
 }
