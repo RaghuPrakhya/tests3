@@ -62,7 +62,7 @@ pipeline {
                               ACCOUNT_NUM='770765425423'
                           fi
   
-                          echo "Iteration : $ACCOUNT_NUM"
+                          echo "Iteration : $i"
                           echo "${ACCOUNTS_ARRAY[$i]} : $ACCOUNT_NUM"
   
                           ## Assume a role into the dev account
