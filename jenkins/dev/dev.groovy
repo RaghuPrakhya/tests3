@@ -87,7 +87,13 @@ pipeline {
                           #export DEPLOY_ENVIRONMENT=${ACCOUNTS_ARRAY[$i]}
                           #aws s3 ls
   
-                          /runway/runway plan
+                          /runway/runway plan 2>&1 | tee /tmp/plan.txt
+
+                          chngCnt=`grep 'INFO:runway.cfngin.providers.aws.default:.* full changeset' /tmp/plan.txt | wc -l `
+                          noChngCnt=`grep 'INFO:runway.cfngin.actions.diff:No changes' plan_again_no_change.txt | wc -l`
+
+                          echo "Add count is $chngCnt"
+                          echo "Change count is $chngCnt"
 
                           ################################
                           #### End deployment actions ####
