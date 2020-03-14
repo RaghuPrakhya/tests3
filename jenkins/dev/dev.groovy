@@ -12,7 +12,7 @@ pipeline {
         DEPLOY_ENVIRONMENT      = 'dev'
         IS_JENKINS_MODE         = "true"
         GIT_REPO                = "https://github.com/RaghuPrakhya/tests3.git"
-        GIT_CREDENTIALS         = "RaghuPrakhya@gmail.com"
+        GIT_CREDENTIALS         = "RaghuPrakhya"
         // Recipient of the notification emails
         EMAIL_RECIPIENT = 'RaghuPrakhya@gmail.com' // Multiple emails can be separated by a semi-colon
 
@@ -31,9 +31,9 @@ pipeline {
             post {
                 failure {
                     script {
+                        echo "Initialization failure stage"
                         currentBuild.result = 'FAILURE'
                         notifyBuild(currentBuild.result)
-                        echo "Initialization failure stage"
                     }
                 }
             }
@@ -45,6 +45,7 @@ pipeline {
               steps {
                   sh '''
                       echo "Path is $PATH"
+                      echo "Accounts are $ACCOUNTS"
                       OIFS=$IFS;
                       IFS=",";
                       
@@ -114,7 +115,7 @@ pipeline {
                 script {
                     // Set build result and trigger email for successful build
                     currentBuild.result = 'SUCCESS'
-                    // notifyBuild(currentBuild.result)
+                    notifyBuild(currentBuild.result)
                 }
             }
         }         
@@ -124,14 +125,6 @@ pipeline {
 
 // Function to  send notification email
 def notifyBuild(String buildStatus = 'STARTED') {
-    buildStatus =  buildStatus ?: 'SUCCESSFUL'
-    emailext (
-        to: env.EMAIL_RECIPIENT,
-        from: 'no-reply@baxter.com',
-        subject: "Jenkins: '${env.JOB_NAME} [#${env.BUILD_NUMBER}] - $buildStatus'",
-        body: """
-        Jenkins Job ${env.JOB_NAME} [#${env.BUILD_NUMBER}] - $buildStatus
-        Check console output at ${env.BUILD_URL}
-        """
+    println ${buildStatus}
     )
 }
