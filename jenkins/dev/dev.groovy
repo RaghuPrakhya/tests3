@@ -104,7 +104,7 @@ pipeline {
                             export CI=0
                             /runway/runway deploy
                           else
-                            echo "Please check the stacks manually. Some regions are depoyed and others not.
+                            echo "Please check the stacks manually. Some regions are depoyed and others not."
                           fi
 
 
