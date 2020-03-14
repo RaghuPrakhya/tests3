@@ -125,5 +125,5 @@ pipeline {
 
 // Function to  send notification email
 def notifyBuild(String buildStatus = 'STARTED') {
-    echo $buildStatus
+    echo buildStatus
 }
