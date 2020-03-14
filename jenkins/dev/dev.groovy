@@ -52,7 +52,7 @@ pipeline {
                       ACCOUNTS_ARRAY=($ACCOUNTS);
                       WORKSPACE=$(pwd);
   
-                      cd ${WORKSPACE}/tests3
+                      cd ${WORKSPACE}
 
                       ls -ltR
 
