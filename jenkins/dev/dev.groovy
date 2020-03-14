@@ -9,7 +9,7 @@ pipeline {
     environment {
         // Parent folder and deploy env will often be the same
         PARENT_FOLDER           = 'dev'
-        DEPLOY_ENVIRONMENT      = 'dev'
+        #DEPLOY_ENVIRONMENT      = 'dev'
         IS_JENKINS_MODE         = "true"
         GIT_REPO                = "https://github.com/RaghuPrakhya/tests3.git"
         GIT_CREDENTIALS         = "RaghuPrakhya"
