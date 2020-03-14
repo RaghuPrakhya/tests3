@@ -44,8 +44,8 @@ pipeline {
           stage("Execute on all accounts") {
               steps {
                   sh '''
-                      echo "Path is $PATH"
-                      which sh 
+                      #echo "Path is $PATH"
+                      #which sh 
                       echo "Accounts are $ACCOUNTS"
                       OIFS=$IFS;
                       IFS=",";
@@ -87,7 +87,7 @@ pipeline {
                           #export DEPLOY_ENVIRONMENT=${ACCOUNTS_ARRAY[$i]}
                           #aws s3 ls
   
-                          runway plan
+                          /runway/runway plan
 
                           ################################
                           #### End deployment actions ####
