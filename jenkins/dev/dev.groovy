@@ -45,7 +45,7 @@ pipeline {
               steps {
                   sh '''
                       echo "Path is $PATH"
-                      cat $0
+                      which sh 
                       echo "Accounts are $ACCOUNTS"
                       OIFS=$IFS;
                       IFS=",";
