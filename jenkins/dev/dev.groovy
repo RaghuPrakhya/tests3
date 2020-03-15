@@ -95,16 +95,16 @@ pipeline {
                           echo "Add count is $chngCnt"
                           echo "Change count is $noChngCnt"
 
-                          if [ ${chngCnt} -gt 0 -a ${noChngCnt} -eq 0 ]
+                          if [ ${chngCnt} -gt 0 -a ${noChngCnt} -eq 0 ];
                           then
-                            /runway/runway deploy
-                          elif[ ${chngCnt} -eq 0 -a ${noChngCnt} -gt 0 ]
-                            export CI=1
-                            /runway/runway destroy
-                            export CI=0
-                            /runway/runway deploy
+                            /runway/runway deploy;
+                          elif[ ${chngCnt} -eq 0 -a ${noChngCnt} -gt 0 ];
+                            export CI=1;
+                            /runway/runway destroy;
+                            unset CI;
+                            /runway/runway deploy;
                           else
-                            echo "Please check the stacks manually. Some regions are depoyed and others not."
+                            echo "Please check the stacks manually. Some regions are depoyed and others not.";
                           fi
 
 
