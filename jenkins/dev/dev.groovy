@@ -100,6 +100,7 @@ pipeline {
                           then
                             /runway/runway deploy
                           elif [ ${chngCnt} -eq 0 -a ${noChngCnt} -gt 0 ];
+                          then
                             export CI=1;
                             /runway/runway destroy;
                             unset CI;
