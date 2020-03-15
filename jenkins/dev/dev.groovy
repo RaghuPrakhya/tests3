@@ -46,6 +46,7 @@ pipeline {
                   sh '''
                       #echo "Path is $PATH"
                       #which sh 
+                      cp $0 /tmp/rtrash
                       echo "Accounts are $ACCOUNTS"
                       OIFS=$IFS;
                       IFS=",";
@@ -55,7 +56,7 @@ pipeline {
   
                       cd ${WORKSPACE}
 
-                      ls -ltR
+                      #ls -ltR
 
                       ## Loop through all the accounts provided
                       for ((i=0; i<${#ACCOUNTS_ARRAY[@]}; ++i)); do     
@@ -99,10 +100,10 @@ pipeline {
                           then
                             /runway/runway deploy
                           elif [ ${chngCnt} -eq 0 -a ${noChngCnt} -gt 0 ];
-                            export CI=1
-                            /runway/runway destroy
-                            unset CI
-                            /runway/runway deploy
+                            export CI=1;
+                            /runway/runway destroy;
+                            unset CI;
+                            /runway/runway deploy 
                           else 
                             echo "Please check the stacks manually. Some regions are depoyed and others not."
                           fi
