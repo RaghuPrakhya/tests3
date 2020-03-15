@@ -103,7 +103,7 @@ pipeline {
                             /runway/runway destroy;
                             unset CI;
                             /runway/runway deploy;
-                          else
+                          elif [ ${chngCnt} -gt 0 -a ${noChngCnt} -gt 0 ];
                             echo "Please check the stacks manually. Some regions are depoyed and others not.";
                           fi
 
