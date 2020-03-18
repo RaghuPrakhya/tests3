@@ -99,11 +99,12 @@ pipeline {
                         
                         for ((i=0; i<${#REGIONS_ARRAY[@]}; ++i)); do
                          rgn=${REGIONS_ARRAY[$i]}
-                         s3bkt="s3://${codebkt}-${rgn}"
+                         s3bkt="${codebkt}-${rgn}"
+                         s3url="s3://${codebkt}-${rgn}"
                          for f in `find . -name *.zip | tr '\n' ','`
                          do
                           echo "Copying $f to the bucket ${s3bkt}"
-                          aws s3 cp $f ${s3bkt}
+                          aws s3 cp $f ${s3url}
                           echo "Copyied $f to the bucket ${s3bkt}"
                          done
                          echo "Setting the code bucket in envirnment file to ${S3bkt}"
