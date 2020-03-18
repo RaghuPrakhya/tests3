@@ -60,7 +60,7 @@ pipeline {
                     for ((i=0; i<${#ACCOUNTS_ARRAY[@]}; ++i)); do
                         
                         echo "Iteration : $i"
-                        sacct=${ACCOUNTS_ARRAY[$i]
+                        sacct=${ACCOUNTS_ARRAY[$i]}
                         
                         bkt=rptestaccess
                         codebkt=rplambda
@@ -98,7 +98,7 @@ pipeline {
                         ################################################################################
                         
                         for ((i=0; i<${#REGIONS_ARRAY[@]}; ++i)); do
-                         rgn=${REGIONS_ARRAY[$i]
+                         rgn=${REGIONS_ARRAY[$i]}
                          s3bkt="${codebkt}-${rgn}"
                          for f in `find . -name *.zip`
                          do
