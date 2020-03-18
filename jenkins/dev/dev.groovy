@@ -102,8 +102,9 @@ pipeline {
                          s3bkt="${codebkt}-${rgn}"
                          for f in `find . -name *.zip | tr '\n' ','`
                          do
+                          pname=`echo $f | sed -e "s/^..//"`
                           echo "Copying $f to the bucket ${s3bkt}"
-                          s3url="s3://${codebkt}-${rgn}/$f"
+                          s3url="s3://${codebkt}-${rgn}/${pname}"
                           aws s3 cp $f ${s3url}
                           echo "Copyied $f to the bucket ${s3bkt}"
                          done
@@ -113,7 +114,8 @@ pipeline {
                           echo "Substituting ${s3bkt} in place of existing the current bucket name"
                           echo Contents of file before change
                           cat $f
-                          sed -i -e "s/s3bkt:.*$/s3bkt: ${s3bkt}/" $f
+                          sed -i -e "s/codebkt:.*$/codebkt: ${s3bkt}/" $f
+                          sed -i -e "s/codekey:.*$/codebkt: ${pname}/" $f
                           echo Contents of file after change
                           cat $f
                          done
