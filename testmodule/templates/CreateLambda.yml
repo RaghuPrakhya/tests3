@@ -7,6 +7,11 @@ Parameters:
     Default: blah 
     Description: S3 bucket for the code upload
 
+  LambdaKey:
+    Type: String
+    Default: blah 
+    Description: S3 key for the code upload
+
   LambdaRegion:
     Type: String
     Default: reg

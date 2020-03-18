@@ -24,6 +24,7 @@ bucket_parameters: &bucket_parameters
 
 lambda_parameters: &lambda_parameters
   LambdaBucket: ${codebkt}
+  LambdaKey: ${codekey}
   LambdaRegion: ${region}
 
 stacks:

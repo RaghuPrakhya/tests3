@@ -99,7 +99,7 @@ pipeline {
                         
                         for ((i=0; i<${#REGIONS_ARRAY[@]}; ++i)); do
                          rgn=${REGIONS_ARRAY[$i]}
-                         s3bkt="${codebkt}-${rgn}"
+                         s3bkt="s3://${codebkt}-${rgn}"
                          for f in `find . -name *.zip | tr '\n' ','`
                          do
                           echo "Copying $f to the bucket ${s3bkt}"
