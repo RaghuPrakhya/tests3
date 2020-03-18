@@ -115,7 +115,7 @@ pipeline {
                           echo Contents of file before change
                           cat $f
                           sed -i -e "s/codebkt:.*$/codebkt: ${s3bkt}/" $f
-                          sed -i -e "s/codekey:.*$/codebkt: ${pname}/" $f
+                          sed -i -e "s?codekey:.*$?codekey: ${pname}?" $f
                           echo Contents of file after change
                           cat $f
                          done
