@@ -19,9 +19,11 @@ stacker_bucket: ${stackerbucketname}
 #  pAppname: ${appname}
 
 bucket_parameters: &bucket_parameters
+  RPS3TestBucket: ${bkt}
   RPS3TestRegion: ${region}
 
 lambda_parameters: &lambda_parameters
+  LambdaBucket: ${codebkt}
   LambdaRegion: ${region}
 
 stacks:

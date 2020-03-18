@@ -4,12 +4,12 @@ Description: RPS3Test with Cloudwatch Event to create a Technical Report of Baxt
 Parameters:
   RPS3TestBucket:
     Type: String
-    Default: rpbucktestx
+    Default: blah
     Description: S3 bucket for the code upload
 
   RPS3TestRegion:
     Type: String
-    Default: us-east-2
+    Default: reg
     Description: S3 bucket for the code upload
 
 Resources:
@@ -21,7 +21,7 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
-      BucketName: !Join ["-", [!Ref RPS3TestBucket, !Ref RPS3TestRegion]]
+      BucketName: !Ref RPS3TestBucket
 
 Outputs:
   S3Bucket:

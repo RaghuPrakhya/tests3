@@ -4,12 +4,12 @@ Description: Lambda with Cloudwatch Event to create a Technical Report of Baxter
 Parameters:
   LambdaBucket:
     Type: String
-    Default: rplambda 
+    Default: blah 
     Description: S3 bucket for the code upload
 
   LambdaRegion:
     Type: String
-    Default: us-east-2
+    Default: reg
     Description: S3 bucket for the code upload
 
 Resources:
@@ -23,7 +23,7 @@ Resources:
       Handler: "TestFunctionCF.lambda_handler"
       Timeout: 300
       Code:
-        S3Bucket: !Join ["-", [!Ref LambdaBucket, !Ref LambdaRegion]]
+        S3Bucket: !Ref LambdaBucket
         S3Key: "TestFunctionCF.zip"
         
 
