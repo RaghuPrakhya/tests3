@@ -64,7 +64,7 @@ pipeline {
                         
                         bkt=rptestaccess
                         codebkt=rplambda
-                        for f in `find . -name *.env`
+                        for f in `find . -name *.env | tr '\n' ','`
                         do
                          echo "Substituting ${sacct} in place of existing short account in $f"
                          echo Contents of file before change
@@ -100,14 +100,14 @@ pipeline {
                         for ((i=0; i<${#REGIONS_ARRAY[@]}; ++i)); do
                          rgn=${REGIONS_ARRAY[$i]}
                          s3bkt="${codebkt}-${rgn}"
-                         for f in `find . -name *.zip`
+                         for f in `find . -name *.zip | tr '\n' ','`
                          do
                           echo "Copying $f to the bucket ${s3bkt}"
                           aws s3 cp $f ${s3bkt}
                           echo "Copyied $f to the bucket ${s3bkt}"
                          done
                          echo "Setting the code bucket in envirnment file to ${S3bkt}"
-                         for f in `find . -name *${rgn}.env`
+                         for f in `find . -name *${rgn}.env | tr '\n' ','`
                          do
                           echo "Substituting ${s3bkt} in place of existing the current bucket name"
                           echo Contents of file before change
