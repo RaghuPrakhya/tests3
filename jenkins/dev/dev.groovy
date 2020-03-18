@@ -106,7 +106,7 @@ pipeline {
                           aws s3 cp $f ${s3bkt}
                           echo "Copyied $f to the bucket ${s3bkt}"
                          done
-                         echo "Setting the code bucket in envirnment file to ${S3bkt}
+                         echo "Setting the code bucket in envirnment file to ${S3bkt}"
                          for f in `find . -name *${rgn}.env`
                          do
                           echo "Substituting ${s3bkt} in place of existing the current bucket name"
