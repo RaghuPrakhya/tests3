@@ -16,7 +16,7 @@ pipeline {
         // Recipient of the notification emails
         EMAIL_RECIPIENT = 'RaghuPrakhya@gmail.com' // Multiple emails can be separated by a semi-colon
         ACCOUNTS = 'dev-raghu,dev-raghu2'
-        REGIONS = 'us-east-2, ap-southeast-1,eu-central-1'
+        REGIONS = 'us-east-2,ap-southeast-1,eu-central-1'
     }
 
     stages {
